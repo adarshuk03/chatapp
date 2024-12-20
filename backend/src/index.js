@@ -5,17 +5,9 @@ import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
+import { connectDB } from "./lib/db.js";
 
 dotenv.config();
-
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI);
-    console.log(`MongoDB connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.log("MongoDB connection error:", error);
-  }
-};
 
 const PORT = process.env.PORT || 5002;
 console.log(PORT);
